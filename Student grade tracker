@@ -1,0 +1,108 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.Write("How many students do you want to input? ");
+        int studentCount = Convert.ToInt32(Console.ReadLine());
+
+        string[] names = new string[studentCount];
+        int[] grades = new int[studentCount];
+
+        for (int i = 0; i < studentCount; i++)
+        {
+            Console.WriteLine($"\n Student {i + 1} :");
+
+            Console.Write("Enter name: ");
+            names[i] = Console.ReadLine();
+
+            Console.Write("Enter grade: ");
+            grades[i] = Convert.ToInt32(Console.ReadLine());
+        }
+        int choice;
+
+        do
+        {
+            Console.WriteLine("\n STUDENT GRADE TRACKER MENU ");
+            Console.WriteLine("1. Display All Students");
+            Console.WriteLine("2. Search Student by Name");
+            Console.WriteLine("3. Exit");
+            Console.Write("Choose an option: ");
+
+            choice = Convert.ToInt32(Console.ReadLine());
+
+            switch (choice)
+            {
+                case 1:
+                    DisplayAllStudents(names, grades);
+                    break;
+
+                case 2:
+                    SearchStudentByName(names, grades);
+                    break;
+
+                case 3:
+                    Console.WriteLine("End program");
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid option. Please choose 1, 2, or 3.");
+                    break;
+            }
+
+        } while (choice != 3);
+    }
+
+    static void DisplayAllStudents(string[] names, int[] grades)
+    {
+        Console.WriteLine("\n All Students ");
+
+        for (int i = 0; i < names.Length; i++)
+        {
+            string status;
+
+            if (grades[i] > 75)
+            {
+                status = "PASS";
+            }
+            else if (grades[i] < 75)
+            {
+                status = "FAIL";
+            }
+            else
+            {
+                status = "PASS";
+            }
+
+            Console.WriteLine($"Name: {names[i]} | Grade: {grades[i]} | Status: {status}");
+        }
+    }
+
+    static void SearchStudentByName(string[] names, int[] grades)
+    {
+        Console.Write("\nEnter the name of the student to search: ");
+        string searchName = Console.ReadLine();
+
+        bool found = false;
+
+        for (int i = 0; i < names.Length; i++)
+        {
+            if (names[i] == searchName)
+            {
+                string status = grades[i] > 75 ? "PASS" : "FAIL";
+
+                Console.WriteLine($"\nStudent Found!");
+                Console.WriteLine($"Name: {names[i]} | Grade: {grades[i]} | Status: {status}");
+
+                found = true;
+                break; // stop searching once found
+            }
+        }
+
+        if (!found)
+        {
+            Console.WriteLine("Student not found in the records.");
+        }
+    }
+}
