@@ -96,7 +96,7 @@ class Program
                 Console.WriteLine($"Name: {names[i]} | Grade: {grades[i]} | Status: {status}");
 
                 found = true;
-                break; // stop searching once found
+                break;
             }
         }
 
