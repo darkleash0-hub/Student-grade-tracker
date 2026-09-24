@@ -4,7 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.Write("How many students do you want to input? ");
+        Console.Write("How many students? ");
         int studentCount = Convert.ToInt32(Console.ReadLine());
 
         string[] names = new string[studentCount];
@@ -92,7 +92,7 @@ class Program
             {
                 string status = grades[i] > 75 ? "PASS" : "FAIL";
 
-                Console.WriteLine($"\nStudent Found!");
+                Console.WriteLine($"\nStudent Found");
                 Console.WriteLine($"Name: {names[i]} | Grade: {grades[i]} | Status: {status}");
 
                 found = true;
